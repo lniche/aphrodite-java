@@ -61,8 +61,8 @@ Aphrodite 是一个基于 Spring Boot 3 开发的模板项目，旨在帮助开�
 
 ```bash
 # 1. 克隆项目代码库
-git clone https://github.com/lniche/aphrodite-kt.git
-cd aphrodite-kt
+git clone https://github.com/lniche/aphrodite-java.git
+cd aphrodite-java
 
 # 2. 配置文件
 cd resources
@@ -70,13 +70,13 @@ mv application-dev.yml application-test.yml/application-prod.yml
 
 # 3. 处理依赖
 # 确保你已经安装了 JDK21
-./gradlew build
+mvn clean package
 
 # 4. 初始化数据库
 db/init.sql
 
 # 5. 启动服务
-./gradlew run
+mvn spring-boot:run
 ```
 
 ## Repo Activity

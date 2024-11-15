@@ -71,21 +71,21 @@ environment, helping developers to efficiently build and release applications.
 
 ```bash
 # 1. Clone the project code base
-git clone https://github.com/lniche/aphrodite-kt.git
-cd aphrodite-kt
+git clone https://github.com/lniche/aphrodite-java.git
+cd aphrodite-java
 
 # 2. Configuration file
-update resources config
+mv application-dev.yml application-test.yml/application-prod.yml
 
 # 3. Handle dependencies
 # Make sure you have JDK21 installed
-./gradlew build
+mvn clean package
 
 # 4. Initialize the database
 database/init.sql
 
 # 5. Start the service
-./gradlew run
+mvn spring-boot:run
 ```
 
 ## Repo Activity
