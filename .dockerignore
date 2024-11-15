@@ -1,0 +1,44 @@
+# Gradle build directories
+.gradle/
+build/
+
+# Maven build directories
+target/
+
+# IntelliJ IDEA project files
+.idea/
+*.iml
+
+# Eclipse project files
+.classpath
+.project
+.settings/
+
+# Log files
+*.log
+logs/
+log/
+
+# Local development files
+*.tmp
+*.bak
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Git files
+.git/
+.gitignore
+
+# Test files
+src/test/
+**/test/**
+
+# Dependency directories
+libs/
+lib/
+
+# Environment and configuration files
+.env
+*.env
