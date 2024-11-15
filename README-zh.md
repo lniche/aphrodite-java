@@ -65,8 +65,7 @@ git clone https://github.com/lniche/aphrodite-java.git
 cd aphrodite-java
 
 # 2. 配置文件
-cd resources
-mv application-dev.yml application-test.yml/application-prod.yml
+edit application.yml
 
 # 3. 处理依赖
 # 确保你已经安装了 JDK21
