@@ -102,13 +102,13 @@ public class UserController extends BaseController {
         /**
          * User Number
          */
-        @Schema(description = "User Number", example = "A8000")
+        @Schema(description = "User Number", example = "100000")
         private Long userNo;
 
         /**
          * User Code
          */
-        @Schema(description = "User Code", example = "100000")
+        @Schema(description = "User Code", example = "A8000")
         private String userCode;
 
         /**
@@ -125,18 +125,17 @@ public class UserController extends BaseController {
     }
 
     @Data
-    @Schema(description = "Request object for updating user information")
     public static class UpdateUserRequest {
         /**
          * Nickname
          */
-        @Schema(description = "User Nickname", example = "john", required = false)
+        @Schema(description = "User Nickname", example = "john")
         private String nickname;
 
         /**
          * Email
          */
-        @Schema(description = "User Email", example = "john@example.com", required = false)
+        @Schema(description = "User Email", example = "john@example.com")
         private String email;
     }
 }

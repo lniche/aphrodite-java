@@ -40,7 +40,7 @@ logging:
 
 springdoc:
   swagger-ui:
-    path: /swagger-ui/index.html
+    path: /index.html
     tags-sorter: alpha
     operations-sorter: alpha
   api-docs:

@@ -121,7 +121,7 @@ public class AuthController extends BaseController {
          * Verification code
          */
         @NotBlank(message = "Verification code cannot be empty")
-        @Schema(description = "Verification code", example = "1234", required = true)
+        @Schema(description = "Verification Code", example = "1234", required = true)
         private String code;
     }
 
