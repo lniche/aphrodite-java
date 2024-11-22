@@ -79,13 +79,13 @@ edit application.yml
 
 # 3. Handle dependencies
 # Make sure you have JDK21 installed
-mvn clean package
+./mvn clean package
 
 # 4. Initialize the database
 database/init.sql
 
 # 5. Start the service
-mvn spring-boot:run
+./mvn spring-boot:run
 ```
 
 ## Repo Activity

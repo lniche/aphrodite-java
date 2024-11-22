@@ -11,11 +11,13 @@
     <groupId>top.threshold</groupId>
     <artifactId>aphrodite-java</artifactId>
     <version>1.0.0</version>
-    <name>aphrodite-java</name>
     <description>Aphrodite Spring Boot 3 API Scaffold</description>
 
     <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>21</java.version>
+
+        <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
         <lombok.version>1.18.30</lombok.version>
     </properties>
 
@@ -147,9 +149,8 @@
     <build>
         <plugins>
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.1</version>
+                <version>${maven-compiler-plugin.version}</version>
                 <configuration>
                     <source>21</source>
                     <target>21</target>

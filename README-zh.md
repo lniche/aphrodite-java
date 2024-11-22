@@ -69,13 +69,13 @@ edit application.yml
 
 # 3. 处理依赖
 # 确保你已经安装了 JDK21
-mvn clean package
+./mvn clean package
 
 # 4. 初始化数据库
 db/init.sql
 
 # 5. 启动服务
-mvn spring-boot:run
+./mvn spring-boot:run
 ```
 
 ## Repo Activity
