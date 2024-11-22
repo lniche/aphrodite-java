@@ -55,15 +55,15 @@ environment, helping developers to efficiently build and release applications.
 
 ```
 .
-├── bin/ # executable scripts
-├── database/ # database related
-├── deploy/ # deployment related files
-├── docs/ # project documentation
-├── src/ # core directory
-│ ├── app/ # application core code
-│ ├── pkg/ # public module
-├── storage/ # file storage
-└── README.md # project description
+├── bin/                    # executable scripts
+├── database/               # database related
+├── deploy/                 # deployment related files
+├── docs/                   # project documentation
+├── src/                    # core directory
+│ ├── app/                  # application core code
+│ ├── pkg/                  # public module
+├── storage/                # file storage
+└── README.md               # project description
 
 ```
 
