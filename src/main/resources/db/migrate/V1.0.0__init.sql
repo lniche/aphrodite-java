@@ -11,14 +11,15 @@ CREATE TABLE "public"."t_user" (
   "client_ip" text COLLATE "pg_catalog"."default",
   "login_at" timestamptz(6),
   "login_token" text COLLATE "pg_catalog"."default",
+  "avatar" text COLLATE "pg_catalog"."default",
+  "status" int2 DEFAULT 1,
   "id" int8 NOT NULL DEFAULT nextval('t_user_id_seq'::regclass),
   "created_at" timestamptz(6),
   "updated_at" timestamptz(6),
   "deleted_at" timestamptz(6),
   "created_by" text COLLATE "pg_catalog"."default",
   "updated_by" text COLLATE "pg_catalog"."default",
-  "version" int4 DEFAULT 1,
-  "is_deleted" bool DEFAULT false,
+  "version" int8 DEFAULT 1,
   CONSTRAINT "t_user_pkey" PRIMARY KEY ("id"),
   CONSTRAINT "uni_t_user_user_code" UNIQUE ("user_code"),
   CONSTRAINT "uni_t_user_user_no" UNIQUE ("user_no"),
@@ -26,33 +27,37 @@ CREATE TABLE "public"."t_user" (
 )
 ;
 
-ALTER TABLE "public"."t_user" 
+ALTER TABLE "public"."t_user"
   OWNER TO "postgres";
 
 CREATE INDEX "idx_t_user_phone" ON "public"."t_user" USING btree (
   "phone" COLLATE "pg_catalog"."default" "pg_catalog"."text_ops" ASC NULLS LAST
 );
 
-COMMENT ON COLUMN "public"."t_user"."user_code" IS '用户编码';
+COMMENT ON COLUMN "public"."t_user"."user_code" IS 'User code';
 
-COMMENT ON COLUMN "public"."t_user"."user_no" IS '用户编号';
+COMMENT ON COLUMN "public"."t_user"."user_no" IS 'User number';
 
-COMMENT ON COLUMN "public"."t_user"."username" IS '用户名';
+COMMENT ON COLUMN "public"."t_user"."username" IS 'Username';
 
-COMMENT ON COLUMN "public"."t_user"."nickname" IS '昵称';
+COMMENT ON COLUMN "public"."t_user"."nickname" IS 'Nickname';
 
-COMMENT ON COLUMN "public"."t_user"."password" IS '密码';
+COMMENT ON COLUMN "public"."t_user"."password" IS 'Password';
 
-COMMENT ON COLUMN "public"."t_user"."salt" IS '盐值';
+COMMENT ON COLUMN "public"."t_user"."salt" IS 'Salt';
 
-COMMENT ON COLUMN "public"."t_user"."email" IS '邮箱';
+COMMENT ON COLUMN "public"."t_user"."email" IS 'Email';
 
-COMMENT ON COLUMN "public"."t_user"."phone" IS '电话';
+COMMENT ON COLUMN "public"."t_user"."phone" IS 'Phone';
 
-COMMENT ON COLUMN "public"."t_user"."open_id" IS '微信OpenID';
+COMMENT ON COLUMN "public"."t_user"."open_id" IS 'WeChat OpenID';
 
-COMMENT ON COLUMN "public"."t_user"."client_ip" IS '客户端IP';
+COMMENT ON COLUMN "public"."t_user"."client_ip" IS 'Client IP';
 
-COMMENT ON COLUMN "public"."t_user"."login_at" IS '登录时间';
+COMMENT ON COLUMN "public"."t_user"."login_at" IS 'Login time';
 
-COMMENT ON COLUMN "public"."t_user"."login_token" IS '登录令牌';
+COMMENT ON COLUMN "public"."t_user"."login_token" IS 'Login token';
+
+COMMENT ON COLUMN "public"."t_user"."avatar" IS 'avatar';
+
+COMMENT ON COLUMN "public"."t_user"."status" IS '0: Unactivated, 1: Active, 2: Frozen, 3: Deleted';
