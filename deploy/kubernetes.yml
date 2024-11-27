@@ -1,132 +1,163 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: my-app-deployment
+  name: db
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
-      app: my-app
+      app: db
   template:
     metadata:
       labels:
-        app: my-app
+        app: db
     spec:
       containers:
-        - name: my-app
-          image: my-app:latest
+        - name: db
+          image: postgres:17-alpine
           ports:
-            - containerPort: 9001
+            - containerPort: 5432
           env:
-            - name: SPRING_PROFILES_ACTIVE
-              value: dev
+            - name: POSTGRES_DB
+              value: test
+            - name: POSTGRES_USER
+              value: postgres
+            - name: POSTGRES_PASSWORD
+              value: 123123
+            - name: TZ
+              value: UTC
+            - name: LANG
+              value: en_US.UTF-8
+          livenessProbe:
+            exec:
+              command:
+                - pg_isready
+                - -U
+                - postgres
+                - -d
+                - test
+                - -h
+                - localhost
+            initialDelaySeconds: 10
+            periodSeconds: 30
+            timeoutSeconds: 10
+            failureThreshold: 5
 
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: my-app-service
+  name: db
 spec:
   selector:
-    app: my-app
+    app: db
   ports:
     - protocol: TCP
-      port: 80
-      targetPort: 8080
-  type: LoadBalancer
+      port: 5432
+      targetPort: 5432
 
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: mysql-deployment
+  name: cache
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: mysql
+      app: cache
   template:
     metadata:
       labels:
-        app: mysql
+        app: cache
     spec:
       containers:
-        - name: mysql
-          image: mysql:8.0
-          env:
-            - name: MYSQL_ROOT_PASSWORD
-              value: root
-            - name: MYSQL_DATABASE
-              value: mydb
-            - name: MYSQL_USER
-              value: user
-            - name: MYSQL_PASSWORD
-              value: password
-          ports:
-            - containerPort: 3306
-          volumeMounts:
-            - name: mysql-persistent-storage
-              mountPath: /var/lib/mysql
-      volumes:
-        - name: mysql-persistent-storage
-          persistentVolumeClaim:
-            claimName: mysql-pvc
-
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: mysql-service
-spec:
-  selector:
-    app: mysql
-  ports:
-    - protocol: TCP
-      port: 3306
-      targetPort: 3306
-
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: redis-deployment
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: redis
-  template:
-    metadata:
-      labels:
-        app: redis
-    spec:
-      containers:
-        - name: redis
-          image: redis:latest
+        - name: cache
+          image: redis:7-alpine
           ports:
             - containerPort: 6379
+          livenessProbe:
+            exec:
+              command:
+                - redis-cli
+                - ping
+            initialDelaySeconds: 10
+            periodSeconds: 30
+            timeoutSeconds: 10
+            failureThreshold: 5
 
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: redis-service
+  name: cache
 spec:
   selector:
-    app: redis
+    app: cache
   ports:
     - protocol: TCP
       port: 6379
       targetPort: 6379
 
 ---
-apiVersion: v1
-kind: PersistentVolumeClaim
+apiVersion: apps/v1
+kind: Deployment
 metadata:
-  name: mysql-pvc
+  name: api
 spec:
-  accessModes:
-    - ReadWriteOnce
-  resources:
-    requests:
-      storage: 1Gi
+  replicas: 3
+  selector:
+    matchLabels:
+      app: api
+  template:
+    metadata:
+      labels:
+        app: api
+    spec:
+      containers:
+        - name: api
+          image: aphrodite-java:latest
+          ports:
+            - containerPort: 8000
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              value: prod
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 8000
+            initialDelaySeconds: 10
+            periodSeconds: 30
+            timeoutSeconds: 10
+            failureThreshold: 3
+      initContainers:
+        - name: wait-for-db
+          image: busybox
+          command: [ 'sh', '-c', 'until nc -z -v -w30 db 5432; do echo "Waiting for database..."; sleep 5; done;' ]
+        - name: wait-for-cache
+          image: busybox
+          command: [ 'sh', '-c', 'until nc -z -v -w30 cache 6379; do echo "Waiting for cache..."; sleep 5; done;' ]
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: api
+spec:
+  selector:
+    app: api
+  ports:
+    - protocol: TCP
+      port: 8000
+      targetPort: 8000
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: aphrodite-config
+data:
+  aphrodite.properties: |
+    # Application specific properties
+    database.url=jdbc:postgresql://db:5432/test
+    cache.url=redis://cache:6379

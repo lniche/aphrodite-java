@@ -58,7 +58,6 @@
     </springProfile>
     <springProfile name="test">
         <root level="INFO">
-            <appender-ref ref="STDOUT"/>
             <appender-ref ref="ASYNC"/>
             <appender-ref ref="ASYNC_ERROR"/>
         </root>
