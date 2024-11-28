@@ -3,7 +3,6 @@ version: '3.8'
 services:
   db:
     image: postgres:17-alpine
-    container_name: db
     ports:
       - "5432:5432"
     environment:
@@ -23,7 +22,6 @@ services:
 
   cache:
     image: redis:7-alpine
-    container_name: cache
     ports:
       - "6379:6379"
     networks:
@@ -37,7 +35,6 @@ services:
 
   api:
     image: aphrodite-java:latest
-    container_name: api
     ports:
       - "8000:8000"
     networks:
