@@ -21,7 +21,7 @@ import top.threshold.aphrodite.app.entity.pojo.UserDO;
 import top.threshold.aphrodite.app.repository.UserRepository;
 import top.threshold.aphrodite.pkg.constant.CacheKey;
 import top.threshold.aphrodite.pkg.entity.KtResult;
-import top.threshold.aphrodite.pkg.util.RedisUtil;
+import top.threshold.aphrodite.pkg.utils.RedisUtil;
 
 import java.time.OffsetDateTime;
 import java.util.Objects;

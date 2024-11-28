@@ -1,4 +1,4 @@
-package top.threshold.aphrodite.pkg.util;
+package top.threshold.aphrodite.pkg.utils;
 
 import cn.hutool.core.util.IdUtil;
 import org.slf4j.MDC;

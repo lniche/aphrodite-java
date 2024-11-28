@@ -1,4 +1,4 @@
-package top.threshold.aphrodite.pkg.util;
+package top.threshold.aphrodite.pkg.utils;
 
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.json.JSONUtil;

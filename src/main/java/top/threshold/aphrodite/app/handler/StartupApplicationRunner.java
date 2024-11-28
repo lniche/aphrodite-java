@@ -7,7 +7,7 @@ import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 import top.threshold.aphrodite.pkg.constant.CacheKey;
-import top.threshold.aphrodite.pkg.util.RedisUtil;
+import top.threshold.aphrodite.pkg.utils.RedisUtil;
 
 @Slf4j
 @Component

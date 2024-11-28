@@ -5,7 +5,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.concurrent.CustomizableThreadFactory;
-import top.threshold.aphrodite.pkg.util.ThreadPoolExecutorMdcWrapper;
+import top.threshold.aphrodite.pkg.utils.ThreadPoolExecutorMdcWrapper;
 
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.Executor;
