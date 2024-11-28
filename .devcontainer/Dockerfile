@@ -3,14 +3,16 @@ FROM openjdk:21-jdk
 WORKDIR /workspace
 
 RUN apt-get update && \
-    apt-get install -y maven && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
+    apt-get install -y \
+    maven \
+    git \
+    curl \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
 
 COPY . .
 
-RUN mvn install -DskipTests
-
 EXPOSE 8000
 
-CMD ["mvn", "spring-boot:run"]
+# 设置默认命令
+CMD ["/bin/bash"]

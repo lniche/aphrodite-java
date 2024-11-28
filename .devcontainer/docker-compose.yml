@@ -1,4 +1,4 @@
-version: "3.8"
+version: '3.8'
 services:
   app:
     build:
@@ -6,12 +6,13 @@ services:
       dockerfile: Dockerfile
     volumes:
       - .:/workspace
+      - maven-repo:/root/.m2
     ports:
-      - "8000:8000"
+      - "8080:8080"
     environment:
-      - JAVA_HOME=/usr/lib/jvm/java-21-openjdk-amd64
+      - JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
       - MAVEN_HOME=/usr/share/maven
-    command: [ "mvn", "spring-boot:run" ]
+    command: [ "/bin/bash" ]
     networks:
       - container-network
     depends_on:
@@ -41,6 +42,7 @@ services:
       - container-network
 volumes:
   postgres-data:
+  maven-repo:
 networks:
   container-network:
     driver: bridge

@@ -4,7 +4,7 @@
   "service": "app",
   "workspaceFolder": "/workspace",
   "containerEnv": {
-    "JAVA_HOME": "/usr/lib/jvm/java-11-openjdk-amd64",
+    "JAVA_HOME": "/usr/lib/jvm/java-21-openjdk-amd64",
     "MAVEN_HOME": "/usr/share/maven"
   },
   "remoteEnv": {
