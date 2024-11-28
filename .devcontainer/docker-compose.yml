@@ -1,5 +1,4 @@
 version: "3.8"
-
 services:
   app:
     build:
@@ -13,17 +12,18 @@ services:
       - JAVA_HOME=/usr/lib/jvm/java-21-openjdk-amd64
       - MAVEN_HOME=/usr/share/maven
     command: [ "mvn", "spring-boot:run" ]
+    networks:
+      - container-network
     depends_on:
       - db
       - cache
-
   cache:
     image: redis:7-alpine
     restart: unless-stopped
     ports:
       - "6379:6379"
     networks:
-      - devcontainer-network
+      - container-network
   db:
     image: postgres:latest
     restart: unless-stopped
@@ -37,10 +37,10 @@ services:
       - LANG=en_US.UTF-8
     ports:
       - "5432:5432"
-
+    networks:
+      - container-network
 volumes:
   postgres-data:
-
 networks:
-  devcontainer-network:
+  container-network:
     driver: bridge

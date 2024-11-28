@@ -11,6 +11,6 @@ COPY . .
 
 RUN mvn install -DskipTests
 
-EXPOSE 8080
+EXPOSE 8000
 
 CMD ["mvn", "spring-boot:run"]
