@@ -1,0 +1,23 @@
+{
+  "name": "Rust Dev Container",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "app",
+  "workspaceFolder": "/workspace",
+  "containerEnv": {
+    "RUST_BACKTRACE": "1"
+  },
+  "remoteEnv": {
+    "PATH": "/usr/local/cargo/bin:${containerEnv:PATH}"
+  },
+  "postCreateCommand": "rustup component add rustfmt && rustup component add clippy",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "rust-lang.rust-analyzer",
+        "bungcip.better-toml",
+        "serayuzgur.crates",
+        "vadimcn.vscode-lldb"
+      ]
+    }
+  }
+}
