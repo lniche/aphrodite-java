@@ -9,6 +9,7 @@ import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import top.threshold.aphrodite.pkg.verticle.MainVerticle;
 
 @RunWith(VertxUnitRunner.class)
 public class TestMainVerticle {

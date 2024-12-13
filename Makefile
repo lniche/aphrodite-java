@@ -1,6 +1,6 @@
 .PHONY: build
 init:
-	docker build -f deploy/Dockerfile -t aphrodite-rs:latest .
+	docker build -f deploy/Dockerfile -t aphrodite-vertx:latest .
 
 .PHONY: deploy
 init:
