@@ -8,7 +8,7 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-import top.threshold.aphrodite.pkg.entity.KtResult;
+import top.threshold.aphrodite.pkg.entity.R;
 import top.threshold.aphrodite.pkg.enums.Errors;
 import top.threshold.aphrodite.pkg.exception.KtException;
 
@@ -18,38 +18,38 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
     @ResponseBody
-    public KtResult<?> notValidException(MethodArgumentNotValidException e) {
+    public R<?> notValidException(MethodArgumentNotValidException e) {
         String message = e.getBindingResult().getFieldError().getDefaultMessage();
         log.error("Parameter verification failed", e);
-        return KtResult.err(Errors.ERR_BAD_REQUEST.getCode(), message);
+        return R.err(Errors.ERR_BAD_REQUEST.getCode(), message);
     }
 
     @ExceptionHandler(HttpMessageNotReadableException.class)
     @ResponseBody
-    public KtResult<?> messageNotReadable(HttpServletRequest req, HttpMessageNotReadableException e) {
+    public R<?> messageNotReadable(HttpServletRequest req, HttpMessageNotReadableException e) {
         log.warn("messageNotReadable , {}, {}", req.getRequestURI(), e.getMessage());
-        return KtResult.err(Errors.ERR_BAD_REQUEST);
+        return R.err(Errors.ERR_BAD_REQUEST);
     }
 
     @ExceptionHandler(HttpRequestMethodNotSupportedException.class)
     @ResponseBody
-    public KtResult<String> badMethodHandler(HttpServletRequest req, HttpRequestMethodNotSupportedException e) {
+    public R<String> badMethodHandler(HttpServletRequest req, HttpRequestMethodNotSupportedException e) {
         log.warn("HttpRequestMethodNotSupportedException , {}, {}", req.getRequestURI(), e.getMessage());
-        return KtResult.err(Errors.ERR_METHOD_NOT_ALLOWED);
+        return R.err(Errors.ERR_METHOD_NOT_ALLOWED);
     }
 
     @ExceptionHandler(KtException.class)
     @ResponseBody
-    public KtResult<?> ktExceptionHandler(HttpServletRequest req, KtException e) {
+    public R<?> ktExceptionHandler(HttpServletRequest req, KtException e) {
         printStackTrace(e);
-        return KtResult.err(e.getCode(), e.getMessage());
+        return R.err(e.getCode(), e.getMessage());
     }
 
     @ExceptionHandler(Exception.class)
     @ResponseBody
-    public KtResult<String> exceptionHandler(Exception e) {
+    public R<String> exceptionHandler(Exception e) {
         log.error("Exception:", e);
-        return KtResult.err(Errors.ERR_INTERNAL_SERVER_ERROR.getCode(), Errors.ERR_INTERNAL_SERVER_ERROR.getMessage());
+        return R.err(Errors.ERR_INTERNAL_SERVER_ERROR.getCode(), Errors.ERR_INTERNAL_SERVER_ERROR.getMessage());
     }
 
     private void printStackTrace(Throwable t) {

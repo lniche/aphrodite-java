@@ -20,7 +20,7 @@ import top.threshold.aphrodite.app.controller.BaseController;
 import top.threshold.aphrodite.app.entity.pojo.UserDO;
 import top.threshold.aphrodite.app.repository.UserRepository;
 import top.threshold.aphrodite.pkg.constant.CacheKey;
-import top.threshold.aphrodite.pkg.entity.KtResult;
+import top.threshold.aphrodite.pkg.entity.R;
 import top.threshold.aphrodite.pkg.utils.RedisUtil;
 
 import java.time.OffsetDateTime;
@@ -38,25 +38,25 @@ public class AuthController extends BaseController {
 
     @Operation(summary = "Send Verification Code")
     @PostMapping("/send-code")
-    public KtResult<Void> sendVerifyCode(@Validated @RequestBody SendVerifyCodeRequest sendVerifyCodeRequest) {
+    public R<Void> sendVerifyCode(@Validated @RequestBody SendVerifyCodeRequest sendVerifyCodeRequest) {
         String cacheKey = CacheKey.SMS_CODE + sendVerifyCodeRequest.getPhone();
         if (redisUtil.hasKey(cacheKey)) {
-            return KtResult.err("A verification code has already been sent within a minute, please try again later");
+            return R.err("A verification code has already been sent within a minute, please try again later");
         }
         String cacheCode = String.valueOf(RandomUtil.randomInt(1000, 9999));
         log.debug("cache code: {}", cacheCode);
         redisUtil.setStr(cacheKey, cacheCode, 60);
         // TODO fake send
-        return KtResult.ok();
+        return R.ok();
     }
 
     @Operation(summary = "User Registration/Login")
     @PostMapping("/login")
-    public KtResult<LoginResponse> login(@Validated @RequestBody LoginRequest loginRequest) {
+    public R<LoginResponse> login(@Validated @RequestBody LoginRequest loginRequest) {
         String codeKey = CacheKey.SMS_CODE + loginRequest.getPhone();
         String cacheCode = redisUtil.getStr(codeKey);
         if (!loginRequest.getCode().equals(cacheCode))
-            return KtResult.err("Verification code is incorrect, please re-enter");
+            return R.err("Verification code is incorrect, please re-enter");
 
         UserDO userDO = userRepository.getByPhone(loginRequest.getPhone());
         if (Objects.isNull(userDO)) {
@@ -79,7 +79,7 @@ public class AuthController extends BaseController {
         LoginResponse loginResponse = new LoginResponse();
         loginResponse.setAccessToken(userDO.getLoginToken());
         redisUtil.del(codeKey);
-        return KtResult.ok(loginResponse);
+        return R.ok(loginResponse);
     }
 
     @Operation(
@@ -87,14 +87,14 @@ public class AuthController extends BaseController {
         security = {@SecurityRequirement(name = "Authorization")}
     )
     @PostMapping("/logout")
-    public KtResult<Void> logout() {
+    public R<Void> logout() {
         UserDO userDO = userRepository.getByCode(loginUid());
         if (userDO == null) {
-            return KtResult.err("User not found");
+            return R.err("User not found");
         }
         userDO.setLoginToken("");
         userRepository.updateById(userDO);
-        return KtResult.ok();
+        return R.ok();
     }
 
     @Data

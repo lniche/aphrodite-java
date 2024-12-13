@@ -8,6 +8,7 @@
         <version>3.3.5</version>
         <relativePath/>
     </parent>
+
     <groupId>top.threshold</groupId>
     <artifactId>aphrodite-java</artifactId>
     <version>1.0.0</version>
@@ -18,7 +19,12 @@
         <java.version>21</java.version>
 
         <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
+
         <lombok.version>1.18.30</lombok.version>
+        <jacoco.version>0.8.12</jacoco.version>
+        <mybatis-flex.version>1.10.1</mybatis-flex.version>
+        <sa-token.version>1.39.0</sa-token.version>
+        <guava.version>33.3.1-jre</guava.version>
     </properties>
 
     <dependencies>
@@ -92,12 +98,12 @@
         <dependency>
             <groupId>com.mybatis-flex</groupId>
             <artifactId>mybatis-flex-spring-boot3-starter</artifactId>
-            <version>1.10.1</version>
+            <version>${mybatis-flex.version}</version>
         </dependency>
         <dependency>
             <groupId>com.mybatis-flex</groupId>
             <artifactId>mybatis-flex-processor</artifactId>
-            <version>1.10.1</version>
+            <version>${mybatis-flex.version}</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -108,12 +114,12 @@
         <dependency>
             <groupId>cn.dev33</groupId>
             <artifactId>sa-token-spring-boot3-starter</artifactId>
-            <version>1.39.0</version>
+            <version>${sa-token.version}</version>
         </dependency>
         <dependency>
             <groupId>cn.dev33</groupId>
             <artifactId>sa-token-redis-jackson</artifactId>
-            <version>1.39.0</version>
+            <version>${sa-token.version}</version>
         </dependency>
 
         <dependency>
@@ -141,8 +147,18 @@
         <dependency>
             <groupId>com.mybatis-flex</groupId>
             <artifactId>mybatis-flex-codegen</artifactId>
-            <version>1.10.1</version>
+            <version>${mybatis-flex.version}</version>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jacoco</groupId>
+            <artifactId>jacoco-maven-plugin</artifactId>
+            <version>${jacoco.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>${guava.version}</version>
         </dependency>
     </dependencies>
 
@@ -163,7 +179,7 @@
                         <path>
                             <groupId>com.mybatis-flex</groupId>
                             <artifactId>mybatis-flex-processor</artifactId>
-                            <version>1.10.1</version>
+                            <version>${mybatis-flex.version}</version>
                         </path>
                     </annotationProcessorPaths>
                 </configuration>
@@ -179,6 +195,26 @@
                         </exclude>
                     </excludes>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>${jacoco.version}</version>
+                <executions>
+                    <execution>
+                        <id>default-prepare-agent</id>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>default-report</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
