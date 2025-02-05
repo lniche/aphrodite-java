@@ -78,7 +78,7 @@ db/init.sql
 ./mvn spring-boot:run
 ```
 
-## Repo Activity
+## 活动记录
 
 ![Alt](https://repobeats.axiom.co/api/embed/77051c15d804671897e92ca568506d5a088f0dca.svg "Repobeats analytics image")
 
