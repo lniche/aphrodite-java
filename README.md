@@ -1,12 +1,12 @@
 # Aphrodite Spring Boot 3 API Scaffold
 
-[English](README.md) | [简体中文](README-zh.md)
+[English](README.md) | [简体中文](README-zh.md) | [日本語](README-jp.md)
 
-Aphrodite is a template project based on Spring Boot 3, designed to help developers get started
-quickly and gain a deep understanding of the framework's usage process. The project provides comprehensive sample code
-and configuration, covering common development scenarios for easy learning and practice. In addition, Aphrodite also
-includes a container deployment template, which makes the project easy to deploy and manage in a modern cloud
-environment, helping developers to efficiently build and release applications.
+Aphrodite is a template project based on Spring Boot 3, designed to help developers get started quickly and gain a deep
+understanding of the framework's usage process. The project provides comprehensive sample code and configuration,
+covering common development scenarios for easy learning and practice. In addition, Aphrodite also includes a container
+deployment template, which makes the project easy to deploy and manage in a modern cloud environment, helping developers
+to efficiently build and release applications.
 
 ## Tech Stack
 
@@ -91,31 +91,6 @@ database/init.sql
 ## Repo Activity
 
 ![Alt](https://repobeats.axiom.co/api/embed/77051c15d804671897e92ca568506d5a088f0dca.svg "Repobeats analytics image")
-
-## Contribute
-
-If you have any suggestions or ideas, please create an issue or submit a Pull Request directly.
-
-1. **Fork** this repository.
-2. **Create** a new branch:
-
-```
-git checkout -b feature/your-feature
-```
-
-3. **Commit** your changes:
-
-```
-git commit -m 'Add new feature'
-```
-
-4. **Push** to your branch:
-
-```
-git push origin feature/your-feature
-```
-
-5. **Submit** a Pull Request.
 
 ## License
 
