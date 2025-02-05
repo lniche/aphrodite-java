@@ -50,8 +50,6 @@ COMMENT ON COLUMN "public"."t_user"."email" IS 'Email';
 
 COMMENT ON COLUMN "public"."t_user"."phone" IS 'Phone';
 
-COMMENT ON COLUMN "public"."t_user"."open_id" IS 'WeChat OpenID';
-
 COMMENT ON COLUMN "public"."t_user"."client_ip" IS 'Client IP';
 
 COMMENT ON COLUMN "public"."t_user"."login_at" IS 'Login time';
