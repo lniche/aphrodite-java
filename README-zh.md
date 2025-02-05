@@ -45,15 +45,15 @@ Aphrodite 是一个基于 Spring Boot 3
 
 ```
 .
-├── bin/                  # 可执行脚本
-├── database/             # 数据库相关
-├── deploy/               # 部署相关文件
-├── docs/                 # 项目文档
-├── src/                  # 核心目录
-│   ├── app/              # 应用核心代码
-│   ├── pkg/              # 公共模块
-├── storage/              # 文件存储
-└── README.md             # 项目说明
+├── scripts/
+├── database/
+├── deploy/
+├── docs/
+├── src/
+│ ├── app/
+│ ├── pkg/
+├── storage/
+└── README.md
 
 ```
 

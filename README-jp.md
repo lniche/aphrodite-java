@@ -45,15 +45,15 @@ Aphrodite は Spring Boot
 
 ```
 .
-├── bin/            # 実行可能スクリプト
-├── database/       # データベース関連
-├── deploy/         # デプロイ関連ファイル
-├── docs/           # プロジェクトドキュメント
-├── src/            # コアディレクトリ
-│ ├── app/          # アプリケーションのコアコード
-│ ├── pkg/          # 共通モジュール
-├── storage/        # ファイルストレージ
-└── README.md       # プロジェクト説明
+├── scripts/
+├── database/
+├── deploy/
+├── docs/
+├── src/
+│ ├── app/
+│ ├── pkg/
+├── storage/
+└── README.md
 
 ```
 
