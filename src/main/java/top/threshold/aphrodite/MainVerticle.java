@@ -1,7 +1,8 @@
-package top.threshold.aphrodite.pkg.verticle;
+package top.threshold.aphrodite;
 
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.Promise;
+import io.vertx.core.Vertx;
 
 public class MainVerticle extends AbstractVerticle {
 
@@ -19,5 +20,9 @@ public class MainVerticle extends AbstractVerticle {
         startPromise.fail(http.cause());
       }
     });
+  }
+
+  public static void main(String[] args) {
+    Vertx.vertx().deployVerticle(new MainVerticle());
   }
 }
