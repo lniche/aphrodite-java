@@ -1,8 +1,8 @@
 package top.threshold.aphrodite.pkg.enums;
 
-import top.threshold.aphrodite.pkg.exception.KtAssert;
+import top.threshold.aphrodite.pkg.exception.ApAssert;
 
-public enum Errors implements KtAssert {
+public enum Errors implements ApAssert {
 
     // common errors
     ERR(-1, "err"),

@@ -5,7 +5,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.3.5</version>
+        <version>3.4.2</version>
         <relativePath/>
     </parent>
 
@@ -17,14 +17,16 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>21</java.version>
-
         <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
-
         <lombok.version>1.18.30</lombok.version>
         <jacoco.version>0.8.12</jacoco.version>
         <mybatis-flex.version>1.10.1</mybatis-flex.version>
-        <sa-token.version>1.39.0</sa-token.version>
+        <sa-token.version>1.40.0</sa-token.version>
         <guava.version>33.3.1-jre</guava.version>
+        <redisson.version>3.36.0</redisson.version>
+        <transmittable.version>2.14.5</transmittable.version>
+        <hutool.version>5.8.33</hutool.version>
+        <knife4j.version>4.4.0</knife4j.version>
     </properties>
 
     <dependencies>
@@ -75,17 +77,17 @@
         <dependency>
             <groupId>org.redisson</groupId>
             <artifactId>redisson-spring-boot-starter</artifactId>
-            <version>3.36.0</version>
+            <version>${redisson.version}</version>
         </dependency>
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>transmittable-thread-local</artifactId>
-            <version>2.14.5</version>
+            <version>${transmittable.version}</version>
         </dependency>
         <dependency>
             <groupId>cn.hutool</groupId>
             <artifactId>hutool-all</artifactId>
-            <version>5.8.33</version>
+            <version>${hutool.version}</version>
         </dependency>
         <dependency>
             <groupId>com.zaxxer</groupId>
@@ -109,7 +111,7 @@
         <dependency>
             <groupId>com.github.xiaoymin</groupId>
             <artifactId>knife4j-openapi3-jakarta-spring-boot-starter</artifactId>
-            <version>4.4.0</version>
+            <version>${knife4j.version}</version>
         </dependency>
         <dependency>
             <groupId>cn.dev33</groupId>
@@ -168,8 +170,8 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>${maven-compiler-plugin.version}</version>
                 <configuration>
-                    <source>21</source>
-                    <target>21</target>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
                     <annotationProcessorPaths>
                         <path>
                             <groupId>org.projectlombok</groupId>

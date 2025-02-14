@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import top.threshold.aphrodite.pkg.entity.R;
 import top.threshold.aphrodite.pkg.enums.Errors;
-import top.threshold.aphrodite.pkg.exception.KtException;
+import top.threshold.aphrodite.pkg.exception.ApException;
 
 @Slf4j
 @RestControllerAdvice
@@ -38,9 +38,9 @@ public class GlobalExceptionHandler {
         return R.err(Errors.ERR_METHOD_NOT_ALLOWED);
     }
 
-    @ExceptionHandler(KtException.class)
+    @ExceptionHandler(ApException.class)
     @ResponseBody
-    public R<?> ktExceptionHandler(HttpServletRequest req, KtException e) {
+    public R<?> ktExceptionHandler(HttpServletRequest req, ApException e) {
         printStackTrace(e);
         return R.err(e.getCode(), e.getMessage());
     }

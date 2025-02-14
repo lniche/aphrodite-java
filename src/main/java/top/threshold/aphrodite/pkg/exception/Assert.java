@@ -6,10 +6,10 @@ import java.util.Map;
 public interface Assert {
 
     // Method to create a new exception, to be implemented by classes that implement Assert
-    KtException newException(Object... args);
+    ApException newException(Object... args);
 
     // Method to create a new exception, to be implemented by classes that implement Assert
-    KtException newException(Throwable t, Object... args);
+    ApException newException(Throwable t, Object... args);
 
     // Assert that the object is not null
     default void assertNotNull(Object obj) {
