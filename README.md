@@ -29,7 +29,6 @@ to efficiently build and release applications.
 | [junit-platform-launcher](https://junit.org/junit5/docs/current/user-guide/#overview-platform-launcher)                                          | JUnit platform launcher                                        |
 | [spring-boot-starter-test](https://spring.io/projects/spring-boot)                                                                               | Spring Boot test tool                                          |
 | [kotlin-test-junit5](https://kotlinlang.org/docs/junit-5.html)                                                                                   | Kotlin test supports JUnit 5                                   |
-| [screw-core](https://github.com/ban-jie/screw)                                                                                                   | Database document generation tool                              |
 | [knife4j-openapi3-jakarta-spring-boot-starter](https://knife4j.github.io/knife4j/)                                                               | Document generation tool supported by OpenAPI 3                |
 | [redisson-spring-boot-starter](https://github.com/redisson/redisson)                                                                             | Spring Boot starter for Redis                                  |
 | [transmittable-thread-local](https://github.com/alibaba/transmittable-thread-local)                                                              | Supports thread local variables passed across threads          |

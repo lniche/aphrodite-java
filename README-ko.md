@@ -82,7 +82,7 @@ db.migrate/V1.0.0__initial_schema.sql 실행
 
 # 5. 서비스 시작
 ./mvn spring-boot:run
-
+```
 
 ## 저장소 활동
 
