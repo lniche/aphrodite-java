@@ -68,23 +68,23 @@ public class RedisUtil {
 
     public int getInt(String key) {
         String str = stringRedisTemplate.opsForValue().get(key);
-        return StringUtils.hasLength(str) ? 0 : Integer.parseInt(str);
+        return !StringUtils.hasLength(str) ? 0 : Integer.parseInt(str);
     }
 
     public boolean getBool(String key) {
         String str = stringRedisTemplate.opsForValue().get(key);
-        return StringUtils.hasLength(str) ? false : Boolean.parseBoolean(str);
+        return !StringUtils.hasLength(str) ? false : Boolean.parseBoolean(str);
     }
 
     public long getLong(String key) {
         String str = stringRedisTemplate.opsForValue().get(key);
-        return StringUtils.hasLength(str) ? 0 : Long.parseLong(str);
+        return !StringUtils.hasLength(str) ? 0 : Long.parseLong(str);
     }
 
     public <T> T getObj(String key, Class<T> clazz) {
         try {
             String json = (String) redisTemplate.opsForValue().get(key);
-            if (StringUtils.hasLength(json)) {
+            if (!StringUtils.hasLength(json)) {
                 return null;
             }
             ObjectMapper objectMapper = new ObjectMapper();
