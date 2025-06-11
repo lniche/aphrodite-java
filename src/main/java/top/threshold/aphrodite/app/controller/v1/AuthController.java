@@ -1,7 +1,5 @@
 package top.threshold.aphrodite.app.controller.v1;
 
-import cn.hutool.core.util.IdUtil;
-import cn.hutool.core.util.RandomUtil;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
@@ -22,9 +20,11 @@ import top.threshold.aphrodite.app.repository.UserRepository;
 import top.threshold.aphrodite.pkg.constant.CacheKey;
 import top.threshold.aphrodite.pkg.entity.R;
 import top.threshold.aphrodite.pkg.utils.RedisUtil;
+import top.threshold.aphrodite.pkg.utils.SnowflakeUtil;
 
 import java.time.OffsetDateTime;
 import java.util.Objects;
+import java.util.concurrent.ThreadLocalRandom;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -43,7 +43,7 @@ public class AuthController extends BaseController {
         if (redisUtil.hasKey(cacheKey)) {
             return R.err("A verification code has already been sent within a minute, please try again later");
         }
-        String cacheCode = String.valueOf(RandomUtil.randomInt(1000, 9999));
+        String cacheCode = String.valueOf(ThreadLocalRandom.current().nextInt(1000, 10000));
         log.debug("cache code: {}", cacheCode);
         redisUtil.setStr(cacheKey, cacheCode, 60);
         // TODO fake send
@@ -62,7 +62,7 @@ public class AuthController extends BaseController {
         if (Objects.isNull(userDO)) {
             userDO = new UserDO();
             userDO.setUserNo(redisUtil.nextId(CacheKey.NEXT_UNO));
-            userDO.setUserCode(IdUtil.getSnowflakeNextIdStr());
+            userDO.setUserCode(SnowflakeUtil.nextId()+"");
             userDO.setClientIp(getRealIpAddress());
             userDO.setNickname("SUGAR_" + loginRequest.getPhone().substring(loginRequest.getPhone().length() - 4));
             userDO.setPhone(loginRequest.getPhone());

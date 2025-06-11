@@ -1,12 +1,12 @@
 package top.threshold.aphrodite.pkg.utils;
 
-import cn.hutool.core.util.StrUtil;
-import cn.hutool.json.JSONUtil;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Component;
+import org.springframework.util.StringUtils;
 
 import java.util.List;
 import java.util.Map;
@@ -68,26 +68,27 @@ public class RedisUtil {
 
     public int getInt(String key) {
         String str = stringRedisTemplate.opsForValue().get(key);
-        return StrUtil.isBlank(str) ? 0 : Integer.parseInt(str);
+        return StringUtils.hasLength(str) ? 0 : Integer.parseInt(str);
     }
 
     public boolean getBool(String key) {
         String str = stringRedisTemplate.opsForValue().get(key);
-        return StrUtil.isBlank(str) ? false : Boolean.parseBoolean(str);
+        return StringUtils.hasLength(str) ? false : Boolean.parseBoolean(str);
     }
 
     public long getLong(String key) {
         String str = stringRedisTemplate.opsForValue().get(key);
-        return StrUtil.isBlank(str) ? 0 : Long.parseLong(str);
+        return StringUtils.hasLength(str) ? 0 : Long.parseLong(str);
     }
 
     public <T> T getObj(String key, Class<T> clazz) {
         try {
             String json = (String) redisTemplate.opsForValue().get(key);
-            if (StrUtil.isBlank(json)) {
+            if (StringUtils.hasLength(json)) {
                 return null;
             }
-            return JSONUtil.toBean(json, clazz);
+            ObjectMapper objectMapper = new ObjectMapper();
+            return objectMapper.readValue(json,clazz);
         } catch (Exception e) {
             log.error("redis error", e);
             return null;

@@ -25,7 +25,6 @@
         <guava.version>33.3.1-jre</guava.version>
         <redisson.version>3.36.0</redisson.version>
         <transmittable.version>2.14.5</transmittable.version>
-        <hutool.version>5.8.33</hutool.version>
         <knife4j.version>4.4.0</knife4j.version>
     </properties>
 
@@ -83,11 +82,6 @@
             <groupId>com.alibaba</groupId>
             <artifactId>transmittable-thread-local</artifactId>
             <version>${transmittable.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>cn.hutool</groupId>
-            <artifactId>hutool-all</artifactId>
-            <version>${hutool.version}</version>
         </dependency>
         <dependency>
             <groupId>com.zaxxer</groupId>

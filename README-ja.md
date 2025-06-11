@@ -6,30 +6,31 @@ Aphrodite は Spring Boot 3をベースに開発されたテンプレートプ�
 
 ## 技術スタック
 
-| 技術                                                                                                                                               | 説明                                 |
-|--------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------|
-| [spring-boot-starter](https://spring.io/projects/spring-boot)                                                                                    | Spring Boot の基本的な依存性               |
-| [kotlin-reflect](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.reflect/)                                                                   | Kotlin のリフレクションライブラリ               |
-| [spring-boot-configuration-processor](https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-configuration-processor.html) | Spring Boot の設定プロセッサ               |
-| [spring-boot-starter-web](https://spring.io/projects/spring-boot)                                                                                | Webアプリケーション開発に必要な依存性               |
-| [spring-boot-starter-undertow](https://spring.io/projects/spring-boot)                                                                           | 埋め込み型のWebサーバー（Undertow）            |
-| [spring-boot-starter-validation](https://spring.io/projects/spring-boot)                                                                         | データ検証のサポート                         |
-| [spring-boot-starter-aop](https://spring.io/projects/spring-boot)                                                                                | AOP（アスペクト指向プログラミング）のサポート           |
-| [spring-boot-starter-data-redis](https://spring.io/projects/spring-data-redis)                                                                   | Redisデータアクセスのサポート                  |
-| [spring-boot-starter-freemarker](https://spring.io/projects/spring-boot)                                                                         | Freemarker テンプレートエンジンのサポート         |
-| [lombok](https://projectlombok.org/)                                                                                                             | Javaオブジェクトの簡略化ツール                  |
-| [spring-boot-devtools](https://docs.spring.io/spring-boot/docs/current/reference/html/using.html#using-boot-devtools)                            | 開発時のツール（ホットリロードをサポート）              |
-| [postgresql](https://jdbc.postgresql.org/)                                                                                                       | PostgreSQLデータベースドライバー              |
-| [spring-boot-starter-test](https://spring.io/projects/spring-boot)                                                                               | Spring Boot のテストツール                |
-| [knife4j-openapi3-jakarta-spring-boot-starter](https://knife4j.github.io/knife4j/)                                                               | OpenAPI 3 のサポートされたドキュメント生成ツール      |
-| [redisson-spring-boot-starter](https://github.com/redisson/redisson)                                                                             | Redis の Spring Boot スターター          |
-| [transmittable-thread-local](https://github.com/alibaba/transmittable-thread-local)                                                              | クロススレッドで伝播するスレッドローカル変数のサポート        |
-| [hutool-all](https://github.com/dromara/hutool)                                                                                                  | Java ツールライブラリ（複数の一般的な機能を提供）        |
-| [sa-token-spring-boot3-starter](https://github.com/dromara/sa-token)                                                                             | 権限認証フレームワークの Spring Boot スターター     |
-| [sa-token-redis-jackson](https://github.com/dromara/sa-token)                                                                                    | Sa-Token の Redis と Jackson の統合サポート |
-| [commons-pool2](https://commons.apache.org/proper/commons-pool/)                                                                                 | Apache Commons コネクションプール           |
-| [mybatis-plus-spring-boot3-starter](https://mp.baomidou.com/)                                                                                    | MyBatis の強化版 Spring Boot スターター     |
-| [mybatis-plus-generator](https://mp.baomidou.com/guide/generator.html)                                                                           | MyBatis-Plus コードジェネレーター            |
+| 技術                                                                                                                                               | 説明                             |
+|--------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------|
+| [spring-boot-starter](https://spring.io/projects/spring-boot)                                                                                    | Spring Boot の基本的な依存関係          |
+| [kotlin-reflect](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.reflect/)                                                                   | Kotlin のリフレクションライブラリ           |
+| [spring-boot-configuration-processor](https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-configuration-processor.html) | Spring Boot の設定プロセッサ           |
+| [spring-boot-starter-web](https://spring.io/projects/spring-boot)                                                                                | Web アプリケーション開発に必要な依存関係         |
+| [spring-boot-starter-undertow](https://spring.io/projects/spring-boot)                                                                           | Undertow 埋め込み Web サーバー         |
+| [spring-boot-starter-validation](https://spring.io/projects/spring-boot)                                                                         | データ検証サポート                      |
+| [spring-boot-starter-aop](https://spring.io/projects/spring-boot)                                                                                | AOP（アスペクト指向プログラミング）サポート        |
+| [spring-boot-starter-data-redis](https://spring.io/projects/spring-data-redis)                                                                   | Redis データアクセスサポート              |
+| [spring-boot-starter-freemarker](https://spring.io/projects/spring-boot)                                                                         | Freemarker テンプレートエンジンサポート      |
+| [lombok](https://projectlombok.org/)                                                                                                             | Java オブジェクトの簡素化ツール             |
+| [kotlinx-coroutines-core](https://kotlinlang.org/docs/coroutines-overview.html)                                                                  | Kotlin コルーチンコアライブラリ            |
+| [kotlinx-coroutines-reactor](https://kotlinlang.org/docs/coroutines-guide.html#reactor)                                                          | Kotlin コルーチンと Reactor の統合      |
+| [spring-boot-devtools](https://docs.spring.io/spring-boot/docs/current/reference/html/using.html#using-boot-devtools)                            | 開発ツール、ホットリロード対応                |
+| [postgresql](https://jdbc.postgresql.org/)                                                                                                       | PostgreSQL データベースドライバ          |
+| [junit-platform-launcher](https://junit.org/junit5/docs/current/user-guide/#overview-platform-launcher)                                          | JUnit プラットフォームランチャー            |
+| [spring-boot-starter-test](https://spring.io/projects/spring-boot)                                                                               | Spring Boot テストツール             |
+| [kotlin-test-junit5](https://kotlinlang.org/docs/junit-5.html)                                                                                   | Kotlin の JUnit 5 テストサポート       |
+| [knife4j-openapi3-jakarta-spring-boot-starter](https://knife4j.github.io/knife4j/)                                                               | OpenAPI 3 対応のドキュメント生成ツール       |
+| [redisson-spring-boot-starter](https://github.com/redisson/redisson)                                                                             | Redis 用 Spring Boot スターター      |
+| [transmittable-thread-local](https://github.com/alibaba/transmittable-thread-local)                                                              | スレッド間で伝播可能なスレッドローカル変数のサポート     |
+| [commons-pool2](https://commons.apache.org/proper/commons-pool/)                                                                                 | Apache Commons コネクションプール       |
+| [mybatis-plus-spring-boot3-starter](https://mp.baomidou.com/)                                                                                    | MyBatis 強化版の Spring Boot スターター |
+| [mybatis-plus-generator](https://mp.baomidou.com/guide/generator.html)                                                                           | MyBatis-Plus コードジェネレーター        |
 
 ## 特徴
 

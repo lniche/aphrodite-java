@@ -1,7 +1,6 @@
 package top.threshold.aphrodite.app.handler;
 
-import cn.hutool.core.util.StrUtil;
-import cn.hutool.json.JSONUtil;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
@@ -10,6 +9,7 @@ import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestContextHolder;
@@ -21,6 +21,8 @@ import org.springframework.web.multipart.MultipartFile;
 @Aspect
 @Component
 public class LogAspect {
+    @Autowired
+    private ObjectMapper objectMapper;
 
     private static final String LINE_SEPARATOR = System.lineSeparator();
 
@@ -46,7 +48,7 @@ public class LogAspect {
         long startTime = System.currentTimeMillis();
         Object proceed = proceedingJoinPoint.proceed();
 
-        log.info("Response Args  : {}", StrUtil.sub(JSONUtil.toJsonStr(proceed), 0, 1024));
+        log.info("Response Args  : {}", objectMapper.writeValueAsString(proceed).substring(0, 1024));
         log.info("Time-Consuming : {} ms", System.currentTimeMillis() - startTime);
         log.info("=========================================== End ===========================================" + LINE_SEPARATOR);
 
@@ -62,7 +64,7 @@ public class LogAspect {
                     continue;
                 }
                 try {
-                    params.append(JSONUtil.toJsonStr(arg));
+                    params.append(objectMapper.writeValueAsString(arg));
                 } catch (Exception e1) {
                     log.error(e1.getMessage());
                 }

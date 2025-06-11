@@ -6,35 +6,31 @@ Aphrodite는 Spring Boot 3를 기반으로 한 템플릿 프로젝트로, 개발
 
 ## 기술 스택
 
-| 기술                                                                                                                                               | 설명                                 |
-|--------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------|
-| [spring-boot-starter](https://spring.io/projects/spring-boot)                                                                                    | Spring Boot의 기본 의존성                |
-| [kotlin-reflect](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.reflect/)                                                                   | Kotlin 리플렉션(반사) 라이브러리              |
-| [spring-boot-configuration-processor](https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-configuration-processor.html) | Spring Boot 구성 프로세서                |
-| [spring-boot-starter-web](https://spring.io/projects/spring-boot)                                                                                | 웹 애플리케이션 개발에 필요한 의존성 제공            |
-| [spring-boot-starter-undertow](https://spring.io/projects/spring-boot)                                                                           | Undertow 임베디드 웹 서버                 |
-| [spring-boot-starter-validation](https://spring.io/projects/spring-boot)                                                                         | 데이터 유효성 검사 지원                      |
-| [spring-boot-starter-aop](https://spring.io/projects/spring-boot)                                                                                | AOP(관점 지향 프로그래밍) 지원                |
-| [spring-boot-starter-data-redis](https://spring.io/projects/spring-data-redis)                                                                   | Redis 데이터 접근 지원                    |
-| [spring-boot-starter-freemarker](https://spring.io/projects/spring-boot)                                                                         | Freemarker 템플릿 엔진 지원               |
-| [lombok](https://projectlombok.org/)                                                                                                             | Java 객체 캡슐화를 간소화하는 도구              |
-| [kotlinx-coroutines-core](https://kotlinlang.org/docs/coroutines-overview.html)                                                                  | Kotlin 코루틴 핵심 라이브러리                |
-| [kotlinx-coroutines-reactor](https://kotlinlang.org/docs/coroutines-guide.html#reactor)                                                          | Kotlin 코루틴과 Reactor 통합 지원          |
-| [spring-boot-devtools](https://docs.spring.io/spring-boot/docs/current/reference/html/using.html#using-boot-devtools)                            | 개발 도구, 핫 리로드 지원                    |
-| [postgresql](https://jdbc.postgresql.org/)                                                                                                       | PostgreSQL 데이터베이스 드라이버             |
-| [junit-platform-launcher](https://junit.org/junit5/docs/current/user-guide/#overview-platform-launcher)                                          | JUnit 플랫폼 실행기                      |
-| [spring-boot-starter-test](https://spring.io/projects/spring-boot)                                                                               | Spring Boot 테스트 도구                 |
-| [kotlin-test-junit5](https://kotlinlang.org/docs/junit-5.html)                                                                                   | Kotlin의 JUnit 5 테스트 지원             |
-| [screw-core](https://github.com/ban-jie/screw)                                                                                                   | 데이터베이스 문서 자동 생성 도구                 |
-| [knife4j-openapi3-jakarta-spring-boot-starter](https://knife4j.github.io/knife4j/)                                                               | OpenAPI 3 기반의 API 문서 생성 도구         |
-| [redisson-spring-boot-starter](https://github.com/redisson/redisson)                                                                             | Redis 연동용 Spring Boot 스타터          |
-| [transmittable-thread-local](https://github.com/alibaba/transmittable-thread-local)                                                              | 스레드 간에 ThreadLocal 값 전달 지원         |
-| [hutool-all](https://github.com/dromara/hutool)                                                                                                  | 다양한 기능을 제공하는 Java 유틸리티 라이브러리       |
-| [sa-token-spring-boot3-starter](https://github.com/dromara/sa-token)                                                                             | 인증 프레임워크 Sa-Token용 Spring Boot 스타터 |
-| [sa-token-redis-jackson](https://github.com/dromara/sa-token)                                                                                    | Sa-Token의 Redis 및 Jackson 연동 지원    |
-| [commons-pool2](https://commons.apache.org/proper/commons-pool/)                                                                                 | Apache Commons 연결 풀 라이브러리          |
-| [mybatis-plus-spring-boot3-starter](https://mp.baomidou.com/)                                                                                    | 향상된 MyBatis용 Spring Boot 스타터       |
-| [mybatis-plus-generator](https://mp.baomidou.com/guide/generator.html)                                                                           | MyBatis-Plus 코드 자동 생성기             |
+| 기술                                                                                                                                               | 설명                          |
+|--------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------|
+| [spring-boot-starter](https://spring.io/projects/spring-boot)                                                                                    | Spring Boot의 기본 의존성         |
+| [kotlin-reflect](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.reflect/)                                                                   | Kotlin 리플렉션 라이브러리           |
+| [spring-boot-configuration-processor](https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-configuration-processor.html) | Spring Boot 설정 프로세서         |
+| [spring-boot-starter-web](https://spring.io/projects/spring-boot)                                                                                | 웹 애플리케이션 개발에 필요한 의존성        |
+| [spring-boot-starter-undertow](https://spring.io/projects/spring-boot)                                                                           | Undertow 내장 웹 서버            |
+| [spring-boot-starter-validation](https://spring.io/projects/spring-boot)                                                                         | 데이터 검증 지원                   |
+| [spring-boot-starter-aop](https://spring.io/projects/spring-boot)                                                                                | AOP(관점 지향 프로그래밍) 지원         |
+| [spring-boot-starter-data-redis](https://spring.io/projects/spring-data-redis)                                                                   | Redis 데이터 접근 지원             |
+| [spring-boot-starter-freemarker](https://spring.io/projects/spring-boot)                                                                         | Freemarker 템플릿 엔진 지원        |
+| [lombok](https://projectlombok.org/)                                                                                                             | Java 객체 단순화 도구              |
+| [kotlinx-coroutines-core](https://kotlinlang.org/docs/coroutines-overview.html)                                                                  | Kotlin 코루틴 코어 라이브러리         |
+| [kotlinx-coroutines-reactor](https://kotlinlang.org/docs/coroutines-guide.html#reactor)                                                          | Kotlin 코루틴과 Reactor 통합      |
+| [spring-boot-devtools](https://docs.spring.io/spring-boot/docs/current/reference/html/using.html#using-boot-devtools)                            | 개발 도구, 핫 리로드 지원             |
+| [postgresql](https://jdbc.postgresql.org/)                                                                                                       | PostgreSQL 데이터베이스 드라이버      |
+| [junit-platform-launcher](https://junit.org/junit5/docs/current/user-guide/#overview-platform-launcher)                                          | JUnit 플랫폼 런처                |
+| [spring-boot-starter-test](https://spring.io/projects/spring-boot)                                                                               | Spring Boot 테스트 도구          |
+| [kotlin-test-junit5](https://kotlinlang.org/docs/junit-5.html)                                                                                   | Kotlin 테스트 JUnit 5 지원       |
+| [knife4j-openapi3-jakarta-spring-boot-starter](https://knife4j.github.io/knife4j/)                                                               | OpenAPI 3 지원 문서 생성 도구       |
+| [redisson-spring-boot-starter](https://github.com/redisson/redisson)                                                                             | Redis용 Spring Boot 스타터      |
+| [transmittable-thread-local](https://github.com/alibaba/transmittable-thread-local)                                                              | 스레드 간 전달 가능한 스레드 로컬 변수 지원   |
+| [commons-pool2](https://commons.apache.org/proper/commons-pool/)                                                                                 | Apache Commons 커넥션 풀        |
+| [mybatis-plus-spring-boot3-starter](https://mp.baomidou.com/)                                                                                    | MyBatis 향상된 Spring Boot 스타터 |
+| [mybatis-plus-generator](https://mp.baomidou.com/guide/generator.html)                                                                           | MyBatis-Plus 코드 생성기         |
 
 ## 주요 기능
 
